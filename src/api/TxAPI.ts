@@ -4,7 +4,14 @@ import {
   BroadcastMode,
   BroadcastTxRequest,
   BroadcastTxResponse,
+  GetBlockWithTxsResponse,
+  GetTxsEventResponse,
 } from "../proto/cosmos/tx/v1beta1/service";
+import {PaginationOptions} from "./APIRequester";
+
+export interface TxSearchOptions extends PaginationOptions {
+  events: { key: string; value: string }[];
+}
 
 export interface IResEstimateGas {
   gas_info: {
@@ -38,7 +45,20 @@ export class TxAPI extends BaseAPI {
     return this._broadcast<BroadcastTxResponse>(tx, "BROADCAST_MODE_BLOCK");
   }
 
+  public async txBlock(
+    height: number,
+    params?: PaginationOptions
+  ): Promise<GetBlockWithTxsResponse> {
+    return this.request.get<GetBlockWithTxsResponse>(`/cosmos/tx/v1beta1/txs/block/${height}`);
+  }
+
   public async txInfo(txHash: string): Promise<TxResponse> {
     return this.request.get<TxResponse>(`/cosmos/tx/v1beta1/txs/${txHash}`);
+  }
+
+  public async search(
+    options: Partial<TxSearchOptions>
+  ): Promise<GetTxsEventResponse> {
+    return this.request.get<GetTxsEventResponse>(`cosmos/tx/v1beta1/txs`);
   }
 }

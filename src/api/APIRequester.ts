@@ -5,12 +5,12 @@ import { OrderBy } from "../proto/cosmos/tx/v1beta1/service";
 export type APIParams = Record<string, string | number | null | undefined | boolean | Array<string>>;
 
 export interface PaginationOptions {
-  "pagination.limit": string;
-  "pagination.offset": string;
-  "pagination.key": string;
-  "pagination.count_total": "true" | "false";
-  "pagination.reverse": "true" | "false";
-  order_by: keyof typeof OrderBy;
+  "pagination.limit"?: string;
+  "pagination.offset"?: string;
+  "pagination.key"?: string;
+  "pagination.count_total"?: "true" | "false";
+  "pagination.reverse"?: "true" | "false";
+  "order_by"?: keyof typeof OrderBy;
 }
 
 export interface Pagination {

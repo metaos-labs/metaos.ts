@@ -8,7 +8,7 @@
     "./src/proto/**/*.ts"
   ],
   "theme": "default",
-  "name": "some.sdk.js",
+  "name": "metaos.ts",
   "excludePrivate": true,
   "excludeProtected": true,
   "hideGenerator": true

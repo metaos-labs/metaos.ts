@@ -1,0 +1,15 @@
+{
+  "entryPoints": ["./src/index.ts"],
+  "out": "docs",
+  "excludeExternals": true,
+  "exclude": [
+    "**/*+(index|.spec|.e2e).ts",
+    "./interface/**/*.ts",
+    "./src/proto/**/*.ts"
+  ],
+  "theme": "default",
+  "name": "some.sdk.js",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true
+}

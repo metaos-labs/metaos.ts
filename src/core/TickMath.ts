@@ -97,7 +97,7 @@ export class TickMath {
     const result = this.getPriceByTick(nearestTick);
     // console.log('getPriceByTick: ' + result);
     // console.log('==========');
-    return toAmountString(result);
+    return result;
   }
 
   public static getPriceBySqrtPrice(sqrtPrice: string): string {
@@ -153,8 +153,8 @@ export class TickMath {
         );
       }
     }
-    console.log("tickLower: " + tickLower);
-    console.log("tickUpper: " + tickUpper);
+    // console.log("tickLower: " + tickLower);
+    // console.log("tickUpper: " + tickUpper);
     return {
       tickLower,
       tickUpper,

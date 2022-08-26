@@ -7,18 +7,19 @@ import {
   QueryAllRandSwapAccountRewardResponse,
   QueryAllRandSwapPoolRewardResponse,
   QueryAllRandSwapRewardConfigResponse,
-  QueryAllRandSwapRewardDenomResponse, QueryAllRandSwapRewardRevealResponse,
+  QueryAllRandSwapRewardDenomResponse,
+  QueryAllRandSwapRewardRevealResponse,
   QueryGetLiquidityPoolRewardResponse,
   QueryGetLiquidityRewardConfigResponse,
   QueryGetLiquidityRewardDenomResponse,
   QueryGetRandSwapAccountRewardResponse,
   QueryGetRandSwapPoolRewardResponse,
   QueryGetRandSwapRewardConfigResponse,
-  QueryGetRandSwapRewardDenomResponse, QueryGetRandSwapRewardRevealResponse,
+  QueryGetRandSwapRewardDenomResponse,
   QueryParamsResponse
 } from "../proto/pool-incentives/query";
 
-export class PoolIncentive extends BaseAPI {
+export class PoolIncentiveAPI extends BaseAPI {
   public async allLiquidityPoolReward(
     params?: PaginationOptions
   ): Promise<QueryAllLiquidityPoolRewardResponse> {

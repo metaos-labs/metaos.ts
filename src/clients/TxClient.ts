@@ -9,6 +9,41 @@ import {
 import { Any } from "cosmjs-types/google/protobuf/any";
 import {
   BaseMsg,
+
+  MsgGrant,
+  MsgExec,
+  MsgRevoke,
+  MsgSend,
+  MsgMultiSend,
+  MsgVerifyInvariant,
+  MsgFundCommunityPool,
+  MsgSetWithdrawAddress,
+  MsgWithdrawDelegatorReward,
+  MsgWithdrawValidatorCommission,
+  MsgSubmitEvidence,
+  MsgGrantAllowance,
+  MsgRevokeAllowance,
+  MsgCreateVestingAccount,
+  MsgGovRepurchase,
+  MsgEthereumTx,
+  MsgSendNft,
+  MsgCreateRandSwapRewardConfig,
+  MsgOpenRandSwapReward,
+  MsgCloseRandSwapReward,
+  MsgUpdateRandSwapRewardConfig,
+  MsgCreateLiquidityRewardConfig,
+  MsgUpdateLiquidityRewardConfig,
+  MsgOpenLiquidityReward,
+  MsgCloseLiquidityReward,
+  MsgCollectFeeProtocol,
+  MsgGovCorePool,
+  MsgIssue,
+  MsgMint,
+  MsgBurn,
+  MsgTransferOwnership,
+  MsgConfirmOwnership,
+  MsgStoreCode,
+
   MsgCollect,
   MsgCollectReward,
   MsgCreatePool,
@@ -88,6 +123,41 @@ export class TxClient {
     this.accountAddress = accountAddress;
 
     const registryTypes = new Map<string, GeneratedType>();
+
+    registryTypes.set(MsgGrant.typeUrl, MsgGrant.Proto);
+    registryTypes.set(MsgExec.typeUrl, MsgExec.Proto);
+    registryTypes.set(MsgRevoke.typeUrl, MsgRevoke.Proto);
+    registryTypes.set(MsgSend.typeUrl, MsgSend.Proto);
+    registryTypes.set(MsgMultiSend.typeUrl, MsgMultiSend.Proto);
+    registryTypes.set(MsgVerifyInvariant.typeUrl, MsgVerifyInvariant.Proto);
+    registryTypes.set(MsgFundCommunityPool.typeUrl, MsgFundCommunityPool.Proto);
+    registryTypes.set(MsgSetWithdrawAddress.typeUrl, MsgSetWithdrawAddress.Proto);
+    registryTypes.set(MsgWithdrawDelegatorReward.typeUrl, MsgWithdrawDelegatorReward.Proto);
+    registryTypes.set(MsgWithdrawValidatorCommission.typeUrl, MsgWithdrawValidatorCommission.Proto);
+    registryTypes.set(MsgSubmitEvidence.typeUrl, MsgSubmitEvidence.Proto);
+    registryTypes.set(MsgGrantAllowance.typeUrl, MsgGrantAllowance.Proto);
+    registryTypes.set(MsgRevokeAllowance.typeUrl, MsgRevokeAllowance.Proto);
+    registryTypes.set(MsgCreateVestingAccount.typeUrl, MsgCreateVestingAccount.Proto);
+    registryTypes.set(MsgGovRepurchase.typeUrl, MsgGovRepurchase.Proto);
+    registryTypes.set(MsgEthereumTx.typeUrl, MsgEthereumTx.Proto);
+    registryTypes.set(MsgSendNft.typeUrl, MsgSendNft.Proto);
+    registryTypes.set(MsgCreateRandSwapRewardConfig.typeUrl, MsgCreateRandSwapRewardConfig.Proto);
+    registryTypes.set(MsgOpenRandSwapReward.typeUrl, MsgOpenRandSwapReward.Proto);
+    registryTypes.set(MsgCloseRandSwapReward.typeUrl, MsgCloseRandSwapReward.Proto);
+    registryTypes.set(MsgUpdateRandSwapRewardConfig.typeUrl, MsgUpdateRandSwapRewardConfig.Proto);
+    registryTypes.set(MsgCreateLiquidityRewardConfig.typeUrl, MsgCreateLiquidityRewardConfig.Proto);
+    registryTypes.set(MsgUpdateLiquidityRewardConfig.typeUrl, MsgUpdateLiquidityRewardConfig.Proto);
+    registryTypes.set(MsgOpenLiquidityReward.typeUrl, MsgOpenLiquidityReward.Proto);
+    registryTypes.set(MsgCloseLiquidityReward.typeUrl, MsgCloseLiquidityReward.Proto);
+    registryTypes.set(MsgCollectFeeProtocol.typeUrl, MsgCollectFeeProtocol.Proto);
+    registryTypes.set(MsgGovCorePool.typeUrl, MsgGovCorePool.Proto);
+    registryTypes.set(MsgIssue.typeUrl, MsgIssue.Proto);
+    registryTypes.set(MsgMint.typeUrl, MsgMint.Proto);
+    registryTypes.set(MsgBurn.typeUrl, MsgBurn.Proto);
+    registryTypes.set(MsgTransferOwnership.typeUrl, MsgTransferOwnership.Proto);
+    registryTypes.set(MsgConfirmOwnership.typeUrl, MsgConfirmOwnership.Proto);
+    registryTypes.set(MsgStoreCode.typeUrl, MsgStoreCode.Proto);
+
     registryTypes.set(MsgCollect.typeUrl, MsgCollect.Proto);
     registryTypes.set(MsgCollectReward.typeUrl, MsgCollectReward.Proto);
     registryTypes.set(MsgCreatePool.typeUrl, MsgCreatePool.Proto);
@@ -242,11 +312,13 @@ export class TxClient {
     });
     const txBytes = TxRaw.encode(txRaw).finish();
 
-    const { gas_info: { gas_wanted, gas_used } } = await this.apiClient.txAPI.estimateGas(toBase64(txBytes));
+    const { gasInfo } = await this.apiClient.txAPI.simulate({
+      txBytes
+    });
 
-    console.log('gas_used: ' + gas_used);
+    console.log('gas_used: ' + gasInfo?.gasUsed);
 
-    return gas_used;
+    return gasInfo?.gasUsed;
   }
 }
 

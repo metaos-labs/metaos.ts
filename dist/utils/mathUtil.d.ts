@@ -1,0 +1,13 @@
+import Decimal from "decimal.js";
+export declare function plus(value1: string, value2: string): string;
+export declare function minus(value1: string | number, value2: string | number): string;
+export declare function multipliedBy(value1: string | number, value2: string | number): string;
+export declare function div(value1: string, value2: string): string;
+export declare function isGreaterThan(value1: string, value2: string): boolean;
+export declare function isLessThan(value1: string, value2: string): boolean;
+export declare function isEqualTo(value1: string, value2: string): boolean;
+export declare function pow18(value: string): string;
+export declare function pow(value: string | number | Decimal, precision?: number, round?: Decimal.Rounding): string;
+export declare function powM18(value: string | number): string;
+export declare function shift(value: string, precision?: number): string;
+export declare function isPositive(value: string | number): boolean;

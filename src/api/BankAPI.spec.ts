@@ -8,12 +8,12 @@ const bank = new BankAPI(c);
 describe('BankAPI', () => {
   describe('balance', () => {
     it('account exists', async () => {
-      const account = await bank.balances(accountBob);
+      const account = await bank.allBalances(accountBob);
       console.log(JSON.stringify(account));
     });
 
     it('invalid account', async () => {
-      await expect(bank.balances('1234')).rejects.toThrow();
+      await expect(bank.allBalances('1234')).rejects.toThrow();
     });
   });
 });

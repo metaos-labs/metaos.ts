@@ -1,5 +1,11 @@
-import { IToken } from "./IToken";
-import { Fee_Amount } from "../constants";
+import {Token} from "./token";
+import {Fee_Amount} from "../constants";
+
+export interface IFeeItem {
+  label: string;
+  value: Fee_Amount;
+  description: string;
+}
 
 export interface ITickData {
   tick_idx: number;
@@ -9,39 +15,15 @@ export interface ITickData {
   price1: string;
 }
 
-type Pick<T, K extends keyof T> = {
-  [P in K]: T[P];
-};
-
-export enum Bound {
-  LOWER = "LOWER",
-  UPPER = "UPPER",
-}
-
-export interface IFeeItem {
-  label: string;
-  value: Fee_Amount;
-  description: string;
-}
-
-export enum Tip_Level {
-  Info = "info",
-  Warning = "warning",
-  Error = "error",
-}
-
-export enum Swap_Direction {
-  In = "exactIn",
-  Out = "exactOut",
-}
-
-export enum Transaction_Status {
-  Wallet = "wallet",
-  Pending = "pending",
-  Complete = "complete",
-  Success = "success",
-  Error = "error",
-  Reject = "reject",
+export interface IPool {
+  address: string;
+  denom0: string;
+  denom1: string;
+  decimal0: number;
+  decimal1: number;
+  fee: number;
+  tick_spacing: number;
+  max_liquidity_per_tick: string;
 }
 
 export interface ILiquidityPosition {
@@ -58,17 +40,6 @@ export interface ILiquidityPosition {
   reward_oweds: Array<string>;
 }
 
-export interface IPool {
-  address: string;
-  denom0: string;
-  denom1: string;
-  decimal0: number;
-  decimal1: number;
-  fee: number;
-  tick_spacing: number;
-  max_liquidity_per_tick: string;
-}
-
 export interface IV3RewardConfig {
   denom: string;
   mintable: boolean;
@@ -76,13 +47,14 @@ export interface IV3RewardConfig {
   reward_growth_global: string;
   reward_per_second: string;
   vault: string;
-  token?: IToken;
+  token?: Token;
   reward_per_day?: string;
 }
 
+
 export interface IV3Reward extends IV3RewardConfig {
   amount: string;
-  token?: IToken;
+  token?: Token;
 }
 
 export interface IPoolPrice {

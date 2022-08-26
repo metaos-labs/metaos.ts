@@ -1,13 +1,15 @@
 import {
-  MsgCollect as MsgCollect_pb,
-  MsgCollectReward as MsgCollectReward_pb,
+  protobufPackage,
   MsgCreatePool as MsgCreatePool_pb,
   MsgCreatePosition as MsgCreatePosition_pb,
-  MsgDecreaseLiquidity as MsgDecreaseLiquidity_pb,
   MsgIncreaseLiquidity as MsgIncreaseLiquidity_pb,
+  MsgDecreaseLiquidity as MsgDecreaseLiquidity_pb,
+  MsgCollect as MsgCollect_pb,
+  MsgCollectReward as MsgCollectReward_pb,
   MsgSwapExactIn as MsgSwapExactIn_pb,
   MsgSwapExactOut as MsgSwapExactOut_pb,
-  protobufPackage,
+  MsgCollectFeeProtocol as MsgCollectFeeProtocol_pb,
+  MsgGovCorePool as MsgGovCorePool_pb,
 } from "../proto/swap/tx";
 import { BaseMsg } from "./BaseMsg";
 import { EncodeObject } from "@cosmjs/proto-signing";
@@ -171,3 +173,44 @@ export namespace MsgIncreaseLiquidity {
   export const Proto = MsgIncreaseLiquidity_pb;
   export interface Proto extends MsgIncreaseLiquidity_pb {}
 }
+
+export class MsgCollectFeeProtocol extends BaseMsg {
+  public protoMsg: MsgCollectFeeProtocol_pb;
+  constructor(msg: MsgCollectFeeProtocol_pb) {
+    super();
+    this.protoMsg = msg;
+  }
+  generateMessage(): EncodeObject {
+    return {
+      typeUrl: MsgCollectFeeProtocol.typeUrl,
+      value: MsgCollectFeeProtocol_pb.fromPartial(this.protoMsg),
+    };
+  }
+}
+
+export namespace MsgCollectFeeProtocol {
+  export const typeUrl: string = `/${protobufPackage}.MsgCollectFeeProtocol`;
+  export const Proto = MsgCollectFeeProtocol_pb;
+  export interface Proto extends MsgCollectFeeProtocol_pb {}
+}
+
+export class MsgGovCorePool extends BaseMsg {
+  public protoMsg: MsgGovCorePool_pb;
+  constructor(msg: MsgGovCorePool_pb) {
+    super();
+    this.protoMsg = msg;
+  }
+  generateMessage(): EncodeObject {
+    return {
+      typeUrl: MsgGovCorePool.typeUrl,
+      value: MsgGovCorePool_pb.fromPartial(this.protoMsg),
+    };
+  }
+}
+
+export namespace MsgGovCorePool {
+  export const typeUrl: string = `/${protobufPackage}.MsgGovCorePool`;
+  export const Proto = MsgGovCorePool_pb;
+  export interface Proto extends MsgGovCorePool_pb {}
+}
+

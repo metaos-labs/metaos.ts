@@ -1,11 +1,11 @@
-import { BaseMsg } from './BaseMsg';
+import { BaseMsg } from '../BaseMsg';
 import {
   protobufPackage,
   MsgSubmitProposal as MsgSubmitProposal_pb,
   MsgVote as MsgVote_pb,
   MsgVoteWeighted as MsgVoteWeighted_pb,
   MsgDeposit as MsgDeposit_pb,
-} from "../proto/cosmos/gov/v1beta1/tx";
+} from "../../proto/cosmos/gov/v1beta1/tx";
 import {EncodeObject} from "@cosmjs/proto-signing";
 
 export class MsgSubmitProposal extends BaseMsg {

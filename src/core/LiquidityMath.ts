@@ -1,4 +1,4 @@
-import { IToken } from "../types";
+import { Token } from "../types";
 import { toDecimalPlaces } from "../utils";
 import Decimal from "decimal.js";
 
@@ -112,7 +112,7 @@ export class LiquidityMath {
     rightRangeValue: number, // pb
     priceValue: number,
     amount0: string,
-    token0: IToken
+    token0: Token
   ): string {
     const liquidity = this.getLiquidityFromAmount0(
       leftRangeValue,
@@ -132,7 +132,7 @@ export class LiquidityMath {
     rightRangeValue: number, // pb
     priceValue: number,
     amount1: string,
-    token1: IToken
+    token1: Token
   ): string {
     const liquidity = this.getLiquidityFromAmount1(
       leftRangeValue,
@@ -153,8 +153,8 @@ export class LiquidityMath {
     rightRangeValue: number | string,
     priceValue: number | string,
     liquidity: string,
-    token0: IToken,
-    token1: IToken
+    token0: Token,
+    token1: Token
   ): { amount0: string; amount1: string } {
     const pc = new Decimal(priceValue);
 

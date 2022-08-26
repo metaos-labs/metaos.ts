@@ -1,7 +1,7 @@
 import invariant from "tiny-invariant";
 import Decimal from "decimal.js";
 import { Fee_Amount, TICK_SPACINGS, BASE_UNIT_TICK } from "../constants";
-import { IToken } from "../types";
+import { Token } from "../types";
 import { sortsBefore, toAmountString } from "../utils";
 
 export class TickMath {
@@ -118,8 +118,8 @@ export class TickMath {
   }
 
   public static getBaseTickRange(
-    fromToken: IToken,
-    toToken: IToken,
+    fromToken: Token,
+    toToken: Token,
     fee: Fee_Amount,
     leftRange: string,
     rightRange: string

@@ -1,11 +1,11 @@
-import { ILiquidityPosition, IPool, IPoolPrice, IV3Reward } from "./ICommon";
+import { ILiquidityPosition, IPool, IPoolPrice, IV3Reward } from './pool';
 
 export interface DenomUnit {
   denom: string;
   exponent?: number;
 }
 
-export interface IToken {
+export interface Token {
   chainId?: string;
   description?: string;
   denom_units?: Array<DenomUnit>;
@@ -23,8 +23,8 @@ export interface ILiquidityTokenRender extends ILiquidityPosition {
   price: string;
   priceLower: string;
   priceUpper: string;
-  token0: IToken;
-  token1: IToken;
+  token0: Token;
+  token1: Token;
   amount0: string;
   amount1: string;
   pool?: IPool;

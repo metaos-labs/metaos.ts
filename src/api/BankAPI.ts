@@ -1,5 +1,5 @@
 import { BaseAPI } from "./BaseAPI";
-import { IToken } from "../types";
+import { Token } from "../types";
 import {PaginationOptions} from "./APIRequester";
 import {Balance} from "../proto/cosmos/bank/v1beta1/genesis";
 import {

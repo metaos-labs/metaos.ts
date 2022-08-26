@@ -5,13 +5,14 @@ import {Balance} from "../proto/cosmos/bank/v1beta1/genesis";
 import {
   QueryAllBalancesResponse,
   QueryBalanceResponse,
-  QueryDenomMetadataResponse, QuerySupplyOfResponse,
+  QueryDenomMetadataResponse, QueryDenomsMetadataResponse,
+  QuerySupplyOfResponse,
   QueryTotalSupplyResponse,
 } from "../proto/cosmos/bank/v1beta1/query";
 import {QueryAllMetadataResponse} from "../proto/token/query";
 
 export class BankAPI extends BaseAPI {
-  public async balances(
+  public async allBalances(
     accountAddress: string,
     params?: PaginationOptions
   ): Promise<QueryAllBalancesResponse> {
@@ -23,7 +24,7 @@ export class BankAPI extends BaseAPI {
     );
   }
 
-  public async balancesByDenom(
+  public async balance(
     denom: string,
     accountAddress: string,
   ): Promise<QueryBalanceResponse> {
@@ -35,31 +36,14 @@ export class BankAPI extends BaseAPI {
     );
   }
 
-  public async denomsMetadata(
-    params?: PaginationOptions
-  ): Promise<QueryAllMetadataResponse> {
-    return this.request.get<QueryAllMetadataResponse>(
-      `/cosmos/bank/v1beta1/denoms_metadata`,
-      { ...params }
-    );
-  }
-
-  public async denomsMetadataByDenom(
-    denom: string
-  ): Promise<QueryDenomMetadataResponse> {
-    return this.request.get<QueryDenomMetadataResponse>(
-      `/cosmos/bank/v1beta1/denoms_metadata/${denom}`
-    );
-  }
-
-  public async supply(params?: PaginationOptions): Promise<QueryTotalSupplyResponse> {
+  public async totalSupply(params?: PaginationOptions): Promise<QueryTotalSupplyResponse> {
     return this.request.get<QueryTotalSupplyResponse>(
       `/cosmos/bank/v1beta1/supply`,
       { ...params }
     );
   }
 
-  public async supplyByDenom(
+  public async supplyOf(
     denom: string
   ): Promise<QuerySupplyOfResponse> {
     return this.request.get<QuerySupplyOfResponse>(

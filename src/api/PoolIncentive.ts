@@ -19,7 +19,7 @@ import {
 } from "../proto/pool-incentives/query";
 
 export class PoolIncentive extends BaseAPI {
-  public async liquidityPoolRewards(
+  public async allLiquidityPoolReward(
     params?: PaginationOptions
   ): Promise<QueryAllLiquidityPoolRewardResponse> {
     return this.request.get<QueryAllLiquidityPoolRewardResponse>(
@@ -36,7 +36,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async liquidityRewardConfigs(
+  public async allLiquidityRewardConfig(
     params?: PaginationOptions
   ): Promise<QueryAllLiquidityRewardConfigResponse> {
     return this.request.get<QueryAllLiquidityRewardConfigResponse>(
@@ -53,7 +53,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async liquidityRewardDenoms(
+  public async allLiquidityRewardDenomR(
     params?: PaginationOptions
   ): Promise<QueryAllLiquidityRewardDenomResponse> {
     return this.request.get<QueryAllLiquidityRewardDenomResponse>(
@@ -79,7 +79,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async randSwapAccountRewards(
+  public async allRandSwapAccountReward(
     params?: PaginationOptions
   ): Promise<QueryAllRandSwapAccountRewardResponse> {
     return this.request.get<QueryAllRandSwapAccountRewardResponse>(
@@ -100,7 +100,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async randSwapPoolRewards(
+  public async allRandSwapPoolReward(
     params?: PaginationOptions
   ): Promise<QueryAllRandSwapPoolRewardResponse> {
     return this.request.get<QueryAllRandSwapPoolRewardResponse>(
@@ -117,7 +117,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async randSwapRewardConfigs(
+  public async allRandSwapRewardConfig(
     params?: PaginationOptions
   ): Promise<QueryAllRandSwapRewardConfigResponse> {
     return this.request.get<QueryAllRandSwapRewardConfigResponse>(
@@ -134,7 +134,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async randSwapRewardDenoms(
+  public async allRandSwapRewardDenom(
     params?: PaginationOptions
   ): Promise<QueryAllRandSwapRewardDenomResponse> {
     return this.request.get<QueryAllRandSwapRewardDenomResponse>(
@@ -154,7 +154,7 @@ export class PoolIncentive extends BaseAPI {
     );
   }
 
-  public async randSwapRewardReveals(
+  public async allRandSwapRewardReveal(
     params?: PaginationOptions
   ): Promise<QueryAllRandSwapRewardRevealResponse> {
     return this.request.get<QueryAllRandSwapRewardRevealResponse>(

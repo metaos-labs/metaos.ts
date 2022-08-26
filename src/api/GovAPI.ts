@@ -2,12 +2,14 @@ import {BaseAPI} from "./BaseAPI";
 import {PaginationOptions} from "./APIRequester";
 import {
   QueryDepositResponse,
-  QueryDepositsResponse, QueryParamsResponse,
+  QueryDepositsResponse,
+  QueryParamsResponse,
   QueryProposalResponse,
-  QueryProposalsResponse, QueryTallyResultResponse, QueryVoteResponse,
+  QueryProposalsResponse,
+  QueryTallyResultResponse,
+  QueryVoteResponse,
   QueryVotesResponse
 } from "../proto/cosmos/gov/v1beta1/query";
-import {DepositParams, VotingParams} from "../proto/cosmos/gov/v1beta1/gov";
 
 export class GovAPI extends BaseAPI {
   public async proposals(
@@ -39,7 +41,7 @@ export class GovAPI extends BaseAPI {
     );
   }
 
-  public async depositsByDepositor(
+  public async deposit(
     proposalId: number,
     depositor: string
   ): Promise<QueryDepositResponse> {
@@ -58,7 +60,7 @@ export class GovAPI extends BaseAPI {
     );
   }
 
-  public async votesByVoter(
+  public async vote(
     proposalId: number,
     voter: string
   ): Promise<QueryVoteResponse> {
@@ -67,7 +69,7 @@ export class GovAPI extends BaseAPI {
     );
   }
 
-  public async tally(
+  public async tallyResult(
     proposalId: number,
   ): Promise<QueryTallyResultResponse> {
     return this.request.get<QueryTallyResultResponse>(

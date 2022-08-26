@@ -38,7 +38,7 @@ export class StakingAPI extends BaseAPI {
     );
   }
 
-  public async delegationsByValidator(
+  public async delegatorDelegations(
     delegator: string,
     validator: string,
     params?: PaginationOptions

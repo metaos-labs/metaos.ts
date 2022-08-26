@@ -3,7 +3,7 @@ import {PaginationOptions} from "./APIRequester";
 import {QueryAllRepurchaseResponse, QueryGetRepurchaseResponse, QueryParamsResponse} from "../proto/deflation/query";
 
 export class DeflationAPI extends BaseAPI {
-  public async repurchases(
+  public async allRepurchase(
     params?: PaginationOptions
   ): Promise<QueryAllRepurchaseResponse> {
     return this.request.get<QueryAllRepurchaseResponse>(
@@ -12,7 +12,7 @@ export class DeflationAPI extends BaseAPI {
     );
   }
 
-  public async repurchasesByDenom(
+  public async getRepurchase(
     denom: string,
   ): Promise<QueryGetRepurchaseResponse> {
     return this.request.get<QueryGetRepurchaseResponse>(

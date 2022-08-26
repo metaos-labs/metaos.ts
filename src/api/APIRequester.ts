@@ -1,8 +1,10 @@
 import Axios, { AxiosInstance } from "axios";
 import _ from 'lodash';
 import { OrderBy } from "../proto/cosmos/tx/v1beta1/service";
+import Long from "long";
 
-export type APIParams = Record<string, string | number | null | undefined | boolean | Array<string>>;
+// export type APIParams = Record<string, string | number | null | undefined | boolean | Array<string> | Array<number> | Long>;
+export type APIParams = Record<string, any>;
 
 export interface PaginationOptions {
   "pagination.limit"?: string;

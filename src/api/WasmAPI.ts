@@ -8,7 +8,7 @@ import {
 } from "../proto/cosmwasm/wasm/v1/query";
 
 export class WasmAPI extends BaseAPI {
-  public async code(
+  public async codes(
     params?: PaginationOptions
   ): Promise<QueryCodesResponse> {
     return this.request.get<QueryCodesResponse>(
@@ -17,7 +17,7 @@ export class WasmAPI extends BaseAPI {
     );
   }
 
-  public async codeInfo(
+  public async code(
     codeID: number
   ): Promise<QueryCodeResponse> {
     return this.request.get<QueryCodeResponse>(
